@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3> Number of unique components supplied by each supplier </h3>
+<table class="table table-striped">
+	<tr>
+		<th> Supplier</th>
+		<th> No of Products</th>
+	</tr>
+	{% for i in x %}
+	<tr>
+		<td>{{ i[1] }}</td>
+		<td>{{ i[0] }}</td>
+	</tr>
+	{%endfor%}
+</table>
+
+<br>
+<h3> Number of products in stock for each product </h3>
+<table class="table table-striped">
+	<tr>
+		<th> Product ID</th>
+		<th> Quantity</th>
+	</tr>
+	{% for i in y %}
+	<tr>
+		<td>{{ i[1] }}</td>
+		<td>{{ i[0] }}</td>
+	</tr>
+	{%endfor%}
+</table>
+<br>
+<h3> Summary for each product of books type</h3>
+<table class="table table-striped">
+	<tr>
+		<th> Name </th>
+		<th> Type</th>
+		<th> Price</th>
+		<th> Supplier ID</th>
+		<th> Quantity</th>
+	</tr>
+	{% for i in z %}
+	<tr>
+		<td>{{ i[0] }}</td>
+		<td>{{ i[1] }}</td>
+		<td>{{ i[2] }}</td>
+		<td>{{ i[3] }}</td>
+		<td>{{ i[4] }}</td>
+	</tr>
+	{%endfor%}
+</table>
+<br>
+<br>
+
+{% endblock %}

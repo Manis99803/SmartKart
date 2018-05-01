@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="align-items-center">
+          <ul>
+          <form action='/view' method="post" class="form-group">
+            <div class="col-md-4">
+            <select name = "type" class="form-control">
+              <option value='Supplier'>Supplier</option>
+              <option value='Shipper'>Shipper</option>
+            </select>
+          </div>
+            <input type="submit" value='Go' class="btn btn-primary">
+          </form>
+          </ul>
+        </div>
+<br>
+<div>
+  <h3> List :</h3>
+  {% for view in views %}
+  <div class="container">
+  <h4>  {{ view.name }} </h4>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

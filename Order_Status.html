@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div>
+          <P id='Status'>Check Status</P>
+          <ul>
+          <form action='/status' method="POST">
+            <input type='text' id='check' name='OrderID' placeholder="OrderID"><br><br>
+            <input type="submit" id='submit' value='Check' class="btn btn-primary">
+          </form>
+          </ul>
+        </div>
+        <h3> {{ status }} </h3>
+{% endblock %}

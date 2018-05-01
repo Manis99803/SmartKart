@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% block content %}
+<html lang="en">
+    <meta charset="utf-8">
+        <!--link rel="stylesheet" type="text/css" href="{{url_for('static',filename='Style.css')}}"-->
+        <title>Electronics</title>
+    </head>
+    <body>
+      <script type="text/javascript">
+        function foo (a) {
+          console.log(a);
+          // $.ajax({
+          //   type: "POST",
+          //   url: "/addtocart",
+          //   data: a,
+          //   cache: false,
+          //   success: function(response){
+          //         alert("Added to Cart");
+          //   }
+          // });
+          $.post('/addtocart', {
+        data: a
+    }).done(function(translated) {
+        alert("Done")
+    }).fail(function() {
+        alert("Failed")
+    });
+        }
+      </script>
+        <div class="form-group">
+          <P id='Electronics'>Choose your product</P>
+          <form action="/electronics" method="post">
+            <div class="col-md-3">
+            <input type="number" class="form-control" name="min" placeholder="minimum price">
+          </div>
+          <div class="col-md-3">
+            <input type="number" class="form-control" name="max" placeholder="maximum price">
+          </div>
+          <div class="col-md-4">
+          <select name="type" class="form-control">
+            <option value="all" >All</option>
+            <option value='Mobile'>Mobile</option>
+            <option value='Laptop'>Laptop</option>
+            <option value='Camera'>Camera</option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+          <select name="sort" class="form-control">
+            <option value="a" >Ascending</option>
+            <option value='b'>Descending</option>
+          </select>
+        </div>
+          <input type="submit" value='List Products' class="btn btn-success">
+        </form>
+        </div>
+<br><br><br><br>
+<div>
+  {% for item in electronics %}
+    <div>
+      <p>{{ item.id }}</p>
+      <img width = "200px" height = "150px" src="static/{{item.id}}.jpg" class="img-thumbnail">
+      <button onclick="foo('{{ item.id }}')" class="btn btn-primary">Add to cart</input>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
+    </body>
+</html>
+{% endblock %}

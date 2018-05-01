@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if current_user.is_anonymous %}
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <h1>Hi, {{ current_user.name }}!</h1>
+    {% endif %}
+
+    <!-- <div><p> {{ posts }} </b></p></div> -->
+    <div class="container">
+    	{% for i in orders %}
+    	<div align="center">
+    		<h4 style="display:inline">{{ i.id }}</h4>
+            <br>
+            <h4 style="display:inline">Date :</h4>
+    		<p style="display:inline">{{ i.date }}</p>
+            <br>
+            <h4 style="display:inline">Price :</h4>
+    		<p style="display:inline">{{ i.price }}</p>
+            <br>
+            <h4 style="display:inline">Status :</h4>
+    		<p style="display:inline"> {{ i.status }}</p>
+            <br>
+    	</div>
+    	{% endfor %}
+    </div>
+{% endblock %}
